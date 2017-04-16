@@ -1,0 +1,3 @@
+package types
+
+class Empty

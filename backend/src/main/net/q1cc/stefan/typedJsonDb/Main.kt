@@ -1,6 +1,7 @@
 package net.q1cc.stefan.typedJsonDb
 
 import net.q1cc.stefan.typedJsonDb.dataStructures.MappingMutableMap
+import net.q1cc.stefan.typedJsonDb.storage.MapDbBasedStorage
 import net.q1cc.stefan.typedJsonDb.typing.Type
 import org.mapdb.DBMaker
 import org.mapdb.DB
@@ -25,7 +26,12 @@ import kotlin.reflect.full.memberProperties
  */
 object Main {
 
+    val defaultStorageDir = File("./database")
+
     @JvmStatic
     fun main(args: Array<String>) {
+
+        Database(MapDbBasedStorage(defaultStorageDir))
+
     }
 }

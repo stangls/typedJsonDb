@@ -24,12 +24,13 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     compile group: 'org.mapdb', name: 'mapdb', version: '3.0.3'
-    compile group:'org.everit.json', name: 'org.everit.json.schema', version: "1.5.1"
+    compile project(":common")
+    testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
 sourceSets {
-    main.kotlin.srcDirs += 'src/'
-    main.java.srcDirs += 'src/'
+    main.kotlin.srcDirs += 'src/main'
+    test.kotlin.srcDirs += 'src/test'
 }
 
 mainClassName = 'net.q1cc.stefan.typedJsonDb.Main'
