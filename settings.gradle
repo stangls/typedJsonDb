@@ -1,4 +1,4 @@
 include 'common'
-include 'backend'
-include 'frontend'
-include 'test'
+include 'server'
+include 'client'
+include 'examples'

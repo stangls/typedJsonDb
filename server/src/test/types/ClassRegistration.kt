@@ -35,7 +35,7 @@ class ClassRegistration {
     fun emptyType() {
         db.aTestWith(Empty::class) {
             println(type.jsonStringPretty)
-            assertEquals("types.Empty", type.schema.title)
+            assertEquals("Empty", type.schema.title)
             assertTrue(schema.requiredProperties.isEmpty())
             assertTrue(schema.propertySchemas.isEmpty())
         }
@@ -46,7 +46,7 @@ class ClassRegistration {
     fun justAString() {
         db.aTestWith(JustAString::class) {
             println(type.jsonStringPretty)
-            assertEquals("types.JustAString", type.schema.title )
+            assertEquals("JustAString", type.schema.title )
             assertEquals(listOf("content"), schema.requiredProperties)
             assertEquals(listOf("content"), schema.propertySchemas.map { it.key })
             assertEquals(schema.propertySchemas.size,1)
@@ -60,7 +60,7 @@ class ClassRegistration {
     fun optionalString() {
         db.aTestWith(OptionalString::class) {
             println(type.jsonStringPretty)
-            assertEquals("types.OptionalString",type.schema.title)
+            assertEquals("OptionalString",type.schema.title)
             assertEquals(listOf<String>(), schema.requiredProperties)
             assertEquals(listOf("content"), schema.propertySchemas.map { it.key })
             assertEquals(schema.propertySchemas.size,1)
@@ -74,7 +74,7 @@ class ClassRegistration {
     fun listOfInts() {
         db.aTestWith(IntList::class) {
             println(type.jsonStringPretty)
-            assertEquals("types.IntList", type.schema.title)
+            assertEquals("IntList", type.schema.title)
             assertEquals(listOf<String>("ints"), schema.requiredProperties)
             assertEquals(listOf("ints"), schema.propertySchemas.map { it.key })
             assertEquals(schema.propertySchemas.size, 1)
@@ -92,14 +92,14 @@ class ClassRegistration {
     fun nested() {
         db.aTestWith(EmptyOptional::class) {
             println(type.jsonStringPretty)
-            assertEquals("types.EmptyOptional",type.schema.title)
+            assertEquals("EmptyOptional",type.schema.title)
             assertEquals(listOf<String>(), schema.requiredProperties)
             assertEquals(listOf("empty"), schema.propertySchemas.map { it.key })
             assertEquals(schema.propertySchemas.size,1)
             schema.propertySchemas.forEach {
                 assertTrue(it.value is ObjectSchema)
                 val subSchema = it.value as ObjectSchema
-                assertEquals("types.Empty",subSchema.title)
+                assertEquals("Empty",subSchema.title)
                 assertTrue(subSchema.requiresObject())
                 assertEquals(1,subSchema.propertySchemas.size)
                 assertEquals(listOf("id"),subSchema.propertySchemas.map{ it.key })
